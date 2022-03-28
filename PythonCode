@@ -1,0 +1,948 @@
+def SwapElement(Input):
+    
+    Output = Input
+    Output[0] , Output[-1] = Input [-1] , Input[0] 
+    return Output
+
+    #get = Input[-1], Input[0]
+    #Input[0], Input[-1] = get
+    #return Input
+
+
+    #start, *middle, end = Input
+    #Input = [end, *middle, start]
+    #return Input
+    
+    #first = Input.pop(0)  
+    #last = Input.pop(-1)
+    #Input.insert(0, last) 
+    #Input.append(first)
+    #return Input
+
+print(SwapElement([12, 35, 9, 56, 24]))
+
+
+
+
+def SwapElementString(Input):
+    Output = [sub.replace('G','-').replace('e','G').replace('-','e') for sub in Input]
+    return Output
+
+    #joinedList = ','.join(Input)
+    #Output = joinedList.replace('G','-').replace('e','G').replace('-','e').split(',')
+    #return Output
+
+print(SwapElementString(['Gfg', 'is', 'best', 'for', 'Geeks']))
+
+
+#imprt time
+#from operator import length_hint
+#Use time.time() to perform performance analysis
+
+def MaxNumber(a, b):
+
+    return max(a,b)
+    #return (a if a >= b else b)
+
+print(MaxNumber(1.9,1.8))
+
+
+#Clear a list
+#Inputlist *= 0
+#Inputlist.clear()
+#del Inputlist[:]
+
+#Reversing a list
+def Reverse(Input):
+    return Input[::-1]
+    
+    #Input.reverse()
+    #return Input
+    
+    #return [ele for ele in reversed(lst)]
+    
+print(Reverse([10, 11, 12, 13, 14, 15]))
+
+
+#Count the occurence of an element in a list
+def countX(lst, x):
+    return lst.count(x)
+
+lst = [8, 6, 8, 10, 8, 20, 10, 8, 8]
+x = 8
+print("Frequency of {} is {}".format(x,countX(lst,x)))
+
+
+#Sum of number digits in a list
+test_list = [12, 67, 98, 34]
+print("The original list is : " + str(test_list))
+res = list(map(lambda ele: sum(int(sub) for sub in str(ele)), test_list))
+#map(function,iterable)
+print ("List Integer Summation : " + str(res))
+
+from functools import reduce
+test_list = [12, 67, 98, 34]
+print("The original list is : " + str(test_list))
+res = [reduce(lambda x, y: int(x) + int(y), list(str(i))) for i in test_list]
+#reduce(function,iterable)
+print("List Integer Summation : " + str(res))
+
+
+#Product of elements in a list
+#result1 = math.prod(list1)
+#result1 = numoy.prod(list1)
+from functools import reduce
+list1 = [1, 2, 3]
+result1 = reduce((lambda x, y: x * y), list1)
+print(result1)
+
+
+#Smallest element in a list
+list1 = [10, 20, 4, 45, 99]
+list1.sort()
+print("Smallest element is:", *list1[:1])
+#* is used for unpacking the list
+
+#Get even numbers in list
+#even_nos = [num for num in list1 if num % 2 == 0]
+#even_nos = list(filter(lambda x: (x % 2 == 0), list1))
+
+
+#Print positive numbers in a list
+list1 = [-10, -21, -4, 45, -66, 93]
+pos_nos = [num for num in list1 if num >= 0]
+#pos_nos = list(filter(lambda x: (x >= 0), list1))
+print("Positive numbers in the list: ", *pos_nos)
+
+# Sort in reverse order
+#unwanted = [0, 3, 4]
+#sorted(unwanted,reverse = False)
+# del list1[element]
+
+#Count the ocurrence of an item in a list
+#n = list.count(a) 
+
+
+
+#Filter empty list from a list
+Input = [5, 6, [], 3, [], [], 9]
+#Output = list(filter(None,Input))
+Output = [element for element in Input if element != []]
+print(Output)
+
+#Dictionary : Convert Lists of List to Dictionary
+test_list = [['a', 'b', 1, 2], ['c', 'd', 3, 4], ['e', 'f', 5, 6]]
+print("The original list is : " + str(test_list))
+res = dict()
+for sub in test_list:
+    res[tuple(sub[:2])] = tuple(sub[2:])
+    
+#res = {tuple(sub[:2]): tuple(sub[2:]) for sub in test_list}
+print("The mapped Dictionary : " + str(res))
+
+ 
+# Uncommon elements in Lists of List
+# using map() + set() + ^
+
+test_list1 = [ [1, 2], [3, 4], [5, 6] ]
+test_list2 = [ [3, 4], [5, 7], [1, 2] ]
+print ("The original list 1 : " + str(test_list1))
+print ("The original list 2 : " + str(test_list2))
+# using map() + set() + ^
+# Uncommon elements in Lists of List
+res_set = set(map(tuple, test_list1)) ^ set(map(tuple, test_list2))
+res_list = list(map(list, res_set))
+
+print ("The uncommon of two lists is : " + str(res_list))
+
+
+#select Random value form list of lists
+import random
+test_list = [[4, 5, 5], [2, 7, 4], [8, 6, 3]]
+print("The original list is : " + str(test_list))
+  
+# initializing Row number
+r_no = 1
+  
+# choice() for random number, from_iterables for flattening
+res = random.choice(test_list[r_no])
+
+print("Random number from Matrix Row : " + str(res))
+
+#sorted is a function. It takes arguments, while sort is a method whichis called with an object.
+#res = [sorted(sub, reverse = True) for sub in test_list]
+#for ele in test_list:
+#	ele.sort(reverse = True)
+
+
+
+#Pair elements with Rear element in Matrix Row
+# using product() + loop
+from itertools import product
+  
+# Initializing list
+test_list = [[4, 5, 6], [2, 4, 5], [6, 7, 5]]
+  
+# printing original list
+print("The original list is : " + str(test_list))
+  
+# Pair elements with Rear element in Matrix Row
+# using product() + loop
+res = []
+for idx in test_list:
+    res.append(list(product(idx[:-1], [idx[-1]])))
+      
+# printing result 
+print ("The list after pairing is : " + str(res))
+
+
+#count unique values inside a list
+from collections import Counter
+input_list = [1, 2, 2, 5, 8, 4, 4, 8]
+items = Counter(input_list).keys()
+#new_set = set(input_list)
+#print("No of unique items in the list are:", len(new_set))
+print("No of unique items in the list are:", len(items))
+
+#List product excluding duplicates
+import functools
+functools.reduce(lambda x, y: x*y, set([1, 3, 5, 6, 3, 5, 6, 1]), 1)
+
+ #Extract elements with Frequency greater than K
+from collections import Counter
+test_list = [4, 6, 4, 3, 3, 4, 3, 7, 8, 8]
+print("The original list : " + str(test_list))
+
+# initializing K
+K = 2
+res = [ele for ele, cnt in Counter(test_list).items() if cnt > K]
+print("The required elements : " + str(res))
+
+#Check is the instance if list or not:  if not isinstance(idx, list):
+
+# Print all Possible Combinations from the three Digits
+from itertools import permutations
+# Get all combination of [1, 2, 3]
+# of length 3
+comb = permutations([1, 2, 3], 3)
+
+for i in comb:
+	print(i)
+    
+#Cartesian Product of two lists
+import itertools
+list_1 = ["a", "b", "c","d"]
+list_2 = [1,4,9]
+[list(element) for element in itertools.product(list_1,list_2)]
+
+
+# Remove duplicates form a list: COnvert the list to set;  a = set(test_list)
+
+# Remove list containing consecutive K records
+test_list = [(4, 5, 6, 3), (5, 6, 6, 9), (1, 3, 5, 6), (6, 6, 7, 8)]
+print("The original list is : " + str(test_list))
+K = 6
+res = [idx for idx in test_list if (K, K) not in zip(idx, idx[1:])]
+print("The records after removal : " + str(res))
+
+#The original list is : [(4, 5, 6, 3), (5, 6, 6, 9), (1, 3, 5, 6), (6, 6, 7, 8)]
+#The records after removal : [(4, 5, 6, 3), (1, 3, 5, 6)]
+
+
+#Sort the list according to the column using lambda
+def sortarray(array):	
+	for i in range(len(array[0])):
+		sortedcolumn = sorted(array, key = lambda x:x[i])
+		print("Sorted array specific to column {}, \
+		{}".format(i, sortedcolumn))
+#if __name__ == '__main__':
+array = [['java', 1995], ['c++', 1983],
+			['python', 1989]]
+
+sortarray(array)
+
+
+# Replace index elements with elements in Other List using map() + lambda
+test_list1 = ['Gfg', 'is', 'best']
+test_list2 = [0, 1, 2, 1, 0, 0, 0, 2, 1, 1, 2, 0]
+res = list(map(lambda idx: test_list1[idx], test_list2))
+print ("The lists after index elements replacements is : " + str(res))
+
+
+# Extract words starting with "g" in String List
+test_list = ["Gfg is best", "Gfg is for geeks", "I love G4G"]
+K = "g"
+res = [ele for temp in test_list for ele in temp.split() if ele[0].lower() == K.lower()]
+print("The filtered elements : " + str(res))
+
+
+# Prefix frequency in List using sum() + startswith()
+test_list = ['gfgisbest', 'geeks', 'gfgfreak', 'gfgCS', 'Gcourses']
+test_sub = 'gfg'
+res = sum(sub.startswith(test_sub) for sub in test_list)
+print ("Strings count with matching frequency : " + str(res))
+
+#Lambda: Check if value is in a List
+
+arr=[1,2,3,4]
+v=8
+x=lambda arr,v: True if v in arr else False
+
+if(x(arr,v)):
+	print("Element is Present in the list")
+else:
+	print("Element is Not Present in the list")
+
+
+#lambda: Find cube root
+cube_root= lambda x: x**(1/3)
+print(cube_root(27))
+
+# Iterating With Python Lambdas
+l1 = [4, 2, 13, 21, 5]
+l2 = list(map(lambda v: v ** 2, l1))
+print(l2)
+
+
+#Lambda: Iterating With Python Lambda
+l1 = [4, 2, 13, 21, 5]
+l2 = list(map(lambda v: v ** 2, filter(lambda u: u % 2, l1)))
+print(l2)
+
+# Use if-else in Lambda Functions
+result = lambda x : f"{x} is even" if x %2==0 else f"{x} is odd"
+print(result(12))
+print(result(11))
+
+
+# lambda function to return minimum of two elements a, b are the arguments and min() method is the expression here.
+get_min = lambda a, b : min(a,b)
+print(get_min(5, 8))
+
+
+# Two lambda functions will be stored in tuple such that 1st element is b and 2nd element will be b. if [a<b] is true it return 1 and element with index 1 will print else if [a<b] is false it return 0, so element with index 0 will print
+a = 5
+b = 8
+print((lambda: b, lambda: a)[a < b]())
+
+#Lambda with underscore as an argument
+l = lambda _: True
+l(1)
+
+
+
+## Python program to demonstrate lambda functions
+def power(n):
+	return lambda a : a ** n
+
+base = power(2)
+print("Now power is set to 2")
+print("8 powerof 2 = ", base(8))
+base = power(5)
+print("Now power is set to 5")
+print("8 powerof 5 = ", base(8))
+
+
+## Python program showing use of lambda function
+nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+sort_lambda = sorted(nums, key = lambda x: x%2)
+print(sort_lambda)
+
+#Function
+# function that takes arbitrary number of inputs
+def avgfun(*n):
+    sums = 0 
+    for t in n:
+        sums = sums + t
+		 
+    avg = sums / len(n)
+    return avg  
+
+result1 = avgfun(1, 2, 3)
+result2 = avgfun(2, 6, 4, 8)
+ 
+# Printing average of the list
+print(round(result1, 2))
+print(round(result2, 2))
+
+
+
+# Python program to convert any base number to its corresponding decimal number
+def any_base_to_decimal(number, base):
+	temp = int(number, base)
+	print(temp)
+
+if __name__ == '__main__' :
+	hexadecimal_number = '1A'
+	base = 16
+	any_base_to_decimal(hexadecimal_number, base)
+    
+    
+#Check if a variable is local or global   
+def func():
+	# defining local variable
+	a_variable = 0
+	is_local_var = "a_variable" in locals()
+    is_global_var = "a_variable" in globals()
+	print(is_local_var)
+
+# driver code
+func()
+
+#using kwargs in functions
+def printKwargs(**kwargs):
+	print(kwargs)
+
+# driver code
+if __name__ == "__main__":
+	printKwargs(Argument_1='gfg', Argument_2='GFG')
+
+
+
+#Just a way to print
+def GFG(name, num):
+	print("hello from %s , %s" % (name, num))
+
+GFG("gfg", "25")
+
+#Just a way to print
+def GFG(name, num):
+    print("hello from {0} , {1}".format(name, num))
+  
+GFG("gfg", "25")
+
+
+#Just a way to print
+def GFG(name, num):
+	print(f'hello from {name} , {num}')
+
+GFG("gfg", "25")
+
+#Just a way to print
+def GFG(**kwargs):
+	for key, value in kwargs.items():
+		print(key, value)
+
+GFG(name="geeks", n="- 25")
+GFG(name="best", n="- 26")
+
+
+#Find number of local variables
+# A function to containing 3 variables
+def fun():
+	a = 1
+	str = 'GeeksForGeeks'
+
+# Driver program
+print(fun.__code__.co_nlocals)
+
+
+
+# Python code explaining min() and max()
+l = ["ab", "abc", "bc", "c"]
+
+print(max(l, key = len))
+print(min(l, key = len))
+
+
+# Python code explaining min() and max()
+def fun(element):
+	return(len(element))
+
+l =["ab", "abc", "bc", "c"]
+print(max(l, key = fun))
+
+# you can also write in this form
+print(max(l, key = lambda element:len(element)))
+
+
+
+# Python code to demonstrate way to get function name using function.__name__
+
+# initializing function
+def GFG():
+	return "You just called for success !!"
+
+print("The name of function is : " + GFG.__name__)
+
+
+#Get the signature of a function using inspect module
+# import required modules
+import inspect
+
+def fun(a, b):
+	return a**b
+
+# use signature()
+print(inspect.signature(fun))
+
+# use getargspec()
+print(inspect.getargspec(fun))
+
+
+#Functions that accept variable length key value pair as arguments; using kwargs in functions
+
+def printKwargs(**kwargs):
+	print(kwargs)
+
+# driver code
+if __name__ == "__main__":
+	printKwargs(Argument_1='gfg', Argument_2='GFG')
+
+# using kwargs in functions
+
+def printValues(**kwargs):
+	for key, value in kwargs.items():
+		print("The value of {} is {}".format(key, value))
+
+# driver code
+if __name__ == '__main__':
+	printValues(abbreviation="GFG", full_name="geeksforgeeks")
+
+
+
+# importing the module
+from types import FunctionType
+
+# function at run-time
+f_code = compile('def gfg(a, b): return(a + b) ', "<int>", "exec")
+f_func = FunctionType(f_code.co_consts[0], globals(), "gfg")
+
+val1 = 3999
+val2 =4999
+
+# calliong the function
+print(f_func(val1, val2))
+
+
+
+#Sort a user defined class
+#Syntax: sorted (iterable, key(optional), reverse(optional) )
+
+class GFG:
+	def __init__(self, a, b):
+		self.a = a
+		self.b = b
+
+	def __repr__(self):
+		return str((self.a, self.b))
+
+
+# list of objects
+gfg = [GFG("geeks", 1),
+	GFG("computer", 3),
+	GFG("for", 2),
+	GFG("geeks", 4),
+	GFG("science", 3)]
+
+# sorting objects on the basis of value
+# stored at variable b
+print(sorted(gfg, key=lambda x: x.b))
+
+
+
+
+
+
+# Python program to sort a string and return its reverse string according to pattern string This function will return the reverse of sorted string according to the pattern
+
+def sortbyPattern(pat, str):
+
+	priority = list(pat)
+
+	# Create a dictionary to store priority of each character
+	myDict = { priority[i] : i for i in range(len(priority))}
+
+	str = list(str)
+
+	# Pass lambda function as key in sort function
+	str.sort( key = lambda ele : myDict[ele])
+
+	# Reverse the string using reverse()
+	str.reverse()
+
+	new_str = ''.join(str)
+	return new_str
+
+
+if __name__=='__main__':
+	pat = "asbcklfdmegnot"
+	str = "eksge"
+	new_str = sortbyPattern(pat, str)
+	print(new_str)
+
+
+
+
+# Python program to demonstrate nested lambda functions
+square = lambda x: x**2
+product = lambda f, n: lambda x: f(x)*n
+
+ans = product(square, 2)(10)
+print(ans)
+#Output=200
+
+# Python program to demonstrate nested lambda functions
+f = lambda a = 2, b = 3:lambda c: a+b+c
+
+o = f()
+print(o(4))
+
+
+
+
+
+
+# Python code demonstrate the working of sorted() with lambda Initializing list of dictionaries
+lis = [{ "name" : "Nandini", "age" : 20},
+{ "name" : "Manjeet", "age" : 20 },
+{ "name" : "Nikhil" , "age" : 19 }]
+
+# using sorted and lambda to print list sorted by age
+print ("The list printed sorting by age: ")
+print (sorted(lis, key = lambda i: i['age']))
+
+print ("\r")
+
+# using sorted and lambda to print list sorted by both age and name. Notice that "Manjeet" now comes before "Nandini"
+print ("The list printed sorting by age and name: ")
+print (sorted(lis, key = lambda i: (i['age'], i['name'])))
+
+print ("\r")
+
+# using sorted and lambda to print list sorted by age in descending order
+print ("The list printed sorting by age in descending order: ")
+print (sorted(lis, key = lambda i: i['age'],reverse=True))
+
+
+
+
+#Syntax of lambda: lambda arguments: expression
+string ='GeeksforGeeks'
+# lambda returns a function object
+a=lambda string : string
+print(a(string))
+
+x ="GeeksforGeeks"
+# lambda gets pass to print
+(lambda x : print(x))(x)
+
+#Print the table of 10
+tables = [lambda x=x: x*10 for x in range(1, 11)]
+
+for table in tables:
+	print(table())
+
+#Python Lambda with Multiple statements: Find second largent element
+List = [[2,3,4],[1, 4, 16, 64],[3, 6, 9, 12]]
+
+# Sort each sublist
+sortList = lambda x: (sorted(i) for i in x)
+
+# Get the second largest element
+secondLargest = lambda x, f : [y[len(y)-2] for y in f(x)]
+res = secondLargest(List, sortList)
+
+print(res)
+
+
+# Python code to illustrate filter() with lambda()
+li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+
+final_list = list(filter(lambda x: (x%2 != 0) , li))
+print(final_list)
+
+
+
+# Python 3 code to people above 18 yrs
+ages = [13, 90, 17, 59, 21, 60, 5]
+
+adults = list(filter(lambda age: age>18, ages))
+
+print(adults)
+
+
+
+# Python code to illustrate map() with lambda() to get double of a list.
+li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+
+final_list = list(map(lambda x: x*2, li))
+print(final_list)
+
+
+
+# Python code to illustrate reduce() with lambda() to get sum of a list from functools import reduce
+li = [5, 8, 10, 20, 50, 100]
+sum = reduce((lambda x, y: x + y), li)
+print (sum)
+
+
+
+
+
+
+# Function to replace a character c1 with c2 and c2 with c1 in a string S
+
+def replaceChars(input,c1,c2):
+	newChars = map(lambda x: x if (x!=c1 and x!=c2) else \
+				c1 if (x==c2) else c2,input)
+
+	print (''.join(newChars))
+
+# Driver program
+if __name__ == "__main__":
+	input = 'grrksfoegrrks'
+	c1 = 'e'
+	c2 = 'r'
+	replaceChars(input,c1,c2)
+
+#output: geeksforgeeks
+
+
+# Python program to Find the Number Occurring Odd Number of Times using Lambda expression and reduce function
+from functools import reduce
+def oddTimes(input):
+	print (reduce(lambda a, b: a ^ b, input))
+
+if __name__ == "__main__":
+	input = [1, 2, 3, 2, 3, 1, 3]
+	oddTimes(input)
+
+#fibonacci numbers using lambda function.
+from functools import reduce
+fib = lambda n: reduce(lambda x, _: x+[x[-1]+x[-2]], range(n-2), [0, 1]) #_ is for list as an argument
+print(fib(5))
+
+#fibonacci numbers using lambda function and map.
+def fibonacci(count):
+	fib_list = [0, 1]
+	any(map(lambda _: fib_list.append(sum(fib_list[-2:])),range(2, count)))
+	return fib_list[:count]
+
+print(fibonacci(10))
+
+#---------------------------------------------------------------------------------------------------------
+#Data Structure
+#---------------------------------------------------------------------------------------------------------
+
+#Binary Search
+# Iterative Binary Search Function
+# It returns index of x in given array arr if present,
+# else returns -1
+def binary_search(arr, x):
+	low = 0
+	high = len(arr) - 1
+	mid = 0
+
+	while low <= high:
+
+		mid = (high + low) // 2
+
+		# If x is greater, ignore left half
+		if arr[mid] < x:
+			low = mid + 1
+
+		# If x is smaller, ignore right half
+		elif arr[mid] > x:
+			high = mid - 1
+
+		# means x is present at mid
+		else:
+			return mid
+
+	# If we reach here, then the element was not present
+	return -1
+
+
+# Test array
+arr = [ 2, 3, 4, 10, 40 ]
+x = 10
+
+# Function call
+result = binary_search(arr, x)
+
+if result != -1:
+	print("Element is present at index", str(result))
+else:
+	print("Element is not present in array")
+
+
+
+# Python 3 program for recursive binary search.
+# Modifications needed for the older Python 2 are found in comments.
+
+# Returns index of x in arr if present, else -1
+def binary_search(arr, low, high, x):
+
+	# Check base case
+	if high >= low:
+
+		mid = (high + low) // 2
+
+		# If element is present at the middle itself
+		if arr[mid] == x:
+			return mid
+
+		# If element is smaller than mid, then it can only
+		# be present in left subarray
+		elif arr[mid] > x:
+			return binary_search(arr, low, mid - 1, x)
+
+		# Else the element can only be present in right subarray
+		else:
+			return binary_search(arr, mid + 1, high, x)
+
+	else:
+		# Element is not present in the array
+		return -1
+
+# Test array
+arr = [ 2, 3, 4, 10, 40 ]
+x = 10
+
+# Function call
+result = binary_search(arr, 0, len(arr)-1, x)
+
+if result != -1:
+	print("Element is present at index", str(result))
+else:
+	print("Element is not present in array")
+
+
+
+#Bubble Sort(Refer wikipedia for the graphical interpretation)
+def BubbleSort(Input):
+    Input = list(Input)
+    for j in range(len(Input)-1,0,-1):
+        for i in range(j):
+            if Input[i] > Input[i+1]:
+                Input[i], Input[i+1] = Input[i+1], Input[i]
+
+    return Input
+
+print(BubbleSort([39,12,18,85,72,10,2,18]))
+
+#Insertion Sort(Refer wikipedia for the graphical interpretation)
+def insertion_sort(array):
+    for index in range(1, len(array)):
+        currentValue = array[index]
+        currentPosition = index
+        while currentPosition > 0 and array[currentPosition - 1] > currentValue:
+            array[currentPosition] = array[currentPosition -1]
+            currentPosition = currentPosition - 1
+        array[currentPosition] = currentValue
+
+
+array = [4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47]
+insertion_sort(array)
+print("sorted array: " + str(array))
+
+
+
+#Selection Sort
+#arr[] = 64 25 12 22 11
+
+#// Find the minimum element in arr[0...4]
+#// and place it at beginning
+#11 25 12 22 64
+
+#// Find the minimum element in arr[1...4]
+#// and place it at beginning of arr[1...4]
+#11 12 25 22 64
+
+#// Find the minimum element in arr[2...4]
+#// and place it at beginning of arr[2...4]
+#11 12 22 25 64
+
+#// Find the minimum element in arr[3...4]
+#// and place it at beginning of arr[3...4]
+#11 12 22 25 64 
+
+
+# Python program for implementation of Selection Sort
+import sys
+A = [64, 25, 12, 22, 11]
+
+# Traverse through all array elements
+for i in range(len(A)):
+	
+	# Find the minimum element in remaining
+	# unsorted array
+	min_idx = i
+	for j in range(i+1, len(A)):
+		if A[min_idx] > A[j]:
+			min_idx = j
+			
+	# Swap the found minimum element with
+	# the first element		
+	A[i], A[min_idx] = A[min_idx], A[i]
+
+# Driver code to test above
+print ("Sorted array")
+for i in range(len(A)):
+	print("%d" %A[i]),
+
+
+#Merge sort
+#Quick sort
+#Heap sort
+
+
+
+#Algorithm	Time Complexity	 
+#                Best	Average	Worst	 
+#Selection Sort	Ω(n^2)	θ(n^2)	O(n^2)	 
+#Bubble Sort	Ω(n)	θ(n^2)	O(n^2)	 
+#Insertion Sort	Ω(n)	θ(n^2)	O(n^2)	 
+#Heap Sort	Ω(n log(n))	θ(n log(n))	O(n log(n))	 
+#Quick Sort	Ω(n log(n))	θ(n log(n))	O(n^2)	 
+#Merge Sort	Ω(n log(n))	θ(n log(n))	O(n log(n))	 
+#Bucket Sort	Ω(n+k)	θ(n+k)	O(n^2)	 
+#Radix Sort	Ω(nk)	θ(nk)	O(nk)	 
+#Count Sort	Ω(n+k)	θ(n+k)	O(n+k)
+#The time complexity of the binary search algorithm is O(log n). The best-case time complexity would be O(1)
+
+
+#Revisit:: https://www.programiz.com/python-programming/object-oriented-programming
+#https://realpython.com/python3-object-oriented-programming/
+
+#Classes
+# This code gets the index in the list of objects by attribute.
+class X:
+	def __init__(self,val):
+		self.val = val
+		
+def getIndex(li,target):
+	for index, x in enumerate(li):
+		if x.val == target:
+			return index
+	return -1
+
+# Driver code
+li = [1,2,3,4,5,6]
+
+# Converting all the items in list to object of class X
+a = list()
+for i in li:
+	a.append(X(i))
+	
+print(getIndex(a,3))
+
+
+# this is used to print the number of instances of a class
+class geeks:
+
+	counter = 0
+
+	# constructor of geeks class
+	def __init__(self):
+		
+		# increment
+		geeks.counter += 1
+
+
+# object or instance of geeks class
+g1 = geeks()
+g2 = geeks()
+g3 = geeks()
+print(geeks.counter)
